@@ -13,8 +13,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
   def update
-    @user = User.find(:id)
+    @user = User.update_attributes(user_params)
+
+    if @user.save
+      render plain: 'ok'
+    else
+      render plain: 'error'
+    end
   end
 
   private
