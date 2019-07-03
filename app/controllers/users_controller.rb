@@ -18,12 +18,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.update_attributes(user_params)
+    @user = User.find(params[:id])
 
-    if @user.save
-      render plain: 'ok'
+    if @user.update_attributes(user_params)
+      redirect_to new_user_path
     else
-      render plain: 'error'
+      render :edit
     end
   end
 
