@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(:id)
+  end
+
   private
 
   def user_params
